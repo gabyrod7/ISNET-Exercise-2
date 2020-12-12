@@ -356,7 +356,9 @@ for ijk in range(NumbOfModels):
 
 
 #We finished with making the plot, now we show it and we ask the question about which model should we use
-print("\n\n\nWhich model should we use to extract the radius? After closing the graph type 1, 2, or 3 for choosing the Line, Parabola, or Cubic respectively\n\n\n")
+print("\n\n-------------------------------------\nWeb browser version: Please open FIG1-ModelComparison.png \n-------------------------------------\n\n")
+print("\n\n\nWhich model should we use to extract the radius? Type 1, 2, or 3 for choosing the Line, Parabola, or Cubic respectively\n\n\n")
+
 
 plt.tight_layout()
 
@@ -375,7 +377,7 @@ plt.show()
 ##################################
 
 
-ModNumber=input()
+ModNumber=float(input())
 
 #Now we start to make the results with the choosen model
 if ModNumber==1:
@@ -493,6 +495,11 @@ ax2.set_xlim([0.76, 0.90])
 
 #We show and save the graph
 plt.tight_layout()
+
+print("\n\n-------------------------------------\nWeb browser version: Please open FIG2-SelectedModelResults.png \n-------------------------------------\n\n")
+print("\n\n\nHere are the results for choosing the model:")
+print(ModelName[0])
+print("\n\n\n")
 plt.savefig('FIG2-SelectedModelResults.png', dpi=fig.dpi)
 plt.show()
 
@@ -540,7 +547,7 @@ FILE.close()
 #Finally, if the estimated radius for this realization of the data is such that we can rule out the wrong radius of 0.88 fm for a two sigma level, then we print the following coupon to celebrate that we have "solved" the proton puzzle
 if abs(ExtRad-TruthRadius) < 2*RadErr and abs(ExtRad-0.88) > 2*RadErr:
     
-    print("If you are using a web-browser terminal and you are reading this you should open the image called Coupon.png")
+    print("\n\n-------------------------------------\nWeb browser version: Please open Coupon.png \n-------------------------------------\n\n")
     #Code to print the coupon
     fig=plt.figure(figsize=(20, 20), dpi=200)
 
