@@ -21,6 +21,9 @@ warnings.filterwarnings("ignore",category=UserWarning)
 #I have desing the graphic part of this code to make the plots for the default values. If this values are changed the plotting part of the code might get weird, but the numerical results should be fine and they will be printed into .txt files, so you can go and take a look there if the graphs are nonsense.
 ########################################################
 
+#Do you want to produce text files that will have the numerical results of what we develop here? Modify it to a "1" for "yes", or leave it in "0" for no
+writefiles=0
+
 #Range of momentum transfers (in fm-2) where the data will be equidistantly spaced.
 Qmin=0.1
 Qmax=2
@@ -507,39 +510,6 @@ plt.show()
 
 
 
-##################################
-###########Writing results to two .txt files
-##################################
-
-FILE=open("SummaryResultsModels.txt",'w')
-FILE.write("Score (Bias, Variance, MSE) for the Radius for each model \n_________________________\n")
-for ij in range(NumbOfModels):
-    
-    FILE.write("\n" +ResultsAllModels[ij][0] + "="+ ScNotListToString(ResultsAllModels[ij][1][0],4)+"\n")
-
-    FILE2=open("DetailedResultsModel"+ResultsAllModels[ij][0]+".txt",'w')
-    FILE2.write("Model: "+ResultsAllModels[ij][0] +"\n")
-    FILE2.write("\n Data\n")
-    FILE2.write('%s' %data)
-
-    FILE2.write("\n \n Errors\n")
-    FILE2.write('%s' %errors)
-    FILE2.write("\n \n Transfer functions times sigmas (Variance)\n")
-    #FILE2.write('%s' %ResultsAllModels[ij][1][1][0])
-    FILE2.write(ScNotListToString(ResultsAllModels[ij][1][1][0],3))
-    FILE2.write("\n \n Transfer functions times etas (Bias)\n")
-    #FILE2.write('%s' %ResultsAllModels[ij][1][1][1])
-    FILE2.write(ScNotListToString(ResultsAllModels[ij][1][1][1],3))
-    FILE2.close()  
-
-
-
-
-FILE.close()  
-
-
-
-
 
 ##################################
 ###########Coupon
@@ -558,6 +528,40 @@ if abs(ExtRad-TruthRadius) < 2*RadErr and abs(ExtRad-0.88) > 2*RadErr:
     plt.axis('off')
     plt.imshow(im) 
     plt.show()
+
+
+
+
+##################################
+###########Writing results to two .txt files
+##################################
+
+if writefiles==1:
+    FILE=open("SummaryResultsModels.txt",'w')
+    FILE.write("Score (Bias, Variance, MSE) for the Radius for each model \n_________________________\n")
+    for ij in range(NumbOfModels):
+        
+        FILE.write("\n" +ResultsAllModels[ij][0] + "="+ ScNotListToString(ResultsAllModels[ij][1][0],4)+"\n")
+
+        FILE2=open("DetailedResultsModel"+ResultsAllModels[ij][0]+".txt",'w')
+        FILE2.write("Model: "+ResultsAllModels[ij][0] +"\n")
+        FILE2.write("\n Data\n")
+        FILE2.write('%s' %data)
+
+        FILE2.write("\n \n Errors\n")
+        FILE2.write('%s' %errors)
+        FILE2.write("\n \n Transfer functions times sigmas (Variance)\n")
+        #FILE2.write('%s' %ResultsAllModels[ij][1][1][0])
+        FILE2.write(ScNotListToString(ResultsAllModels[ij][1][1][0],3))
+        FILE2.write("\n \n Transfer functions times etas (Bias)\n")
+        #FILE2.write('%s' %ResultsAllModels[ij][1][1][1])
+        FILE2.write(ScNotListToString(ResultsAllModels[ij][1][1][1],3))
+        FILE2.close()  
+
+
+
+
+    FILE.close()  
 
 
 
