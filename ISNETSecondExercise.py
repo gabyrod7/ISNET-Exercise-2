@@ -5,7 +5,9 @@ from scipy.optimize import curve_fit
 import matplotlib.image as img
 Pi=np.pi
 
-
+#I was having an issue with how I pass the coordinates of the subplots (where they were going to be on the grid) in the Model Loop. It was working but with a warning. In the following two lines I silence that warning
+import warnings
+warnings.filterwarnings("ignore",category=UserWarning)
 
 
 
