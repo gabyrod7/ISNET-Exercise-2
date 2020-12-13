@@ -338,6 +338,19 @@ for ijk in range(NumbOfModels):
             bbox={'facecolor': 'blue', 'alpha': 0.3, 'pad': 2})
 
 
+
+
+    ax1.text(0.01, 0.79, '$TF_j \  \sigma_j$', style='italic', fontsize=20,
+            bbox={'facecolor': 'orange', 'alpha': 0.3, 'pad': 10,'edgecolor': 'black','linewidth':2})
+    ax1.text(0.01, 0.84, '$TF_j \  \eta_j$', style='italic', fontsize=20,
+            bbox={'facecolor': 'blue', 'alpha': 0.3, 'pad': 10,'edgecolor': 'black','linewidth':2})
+
+    ax1.text(0.01, 0.79, '$TF_j \  \sigma_j$', style='italic', fontsize=20)
+
+
+
+
+
     #Labeling the axes 
     ax1.set_xlabel('$Q^2 \  [fm^{-2}]$',fontsize=20)
     ax1.set_ylabel('$ G(Q^2) $',fontsize=20)
